@@ -1,0 +1,17 @@
+{% extends "error/base.html" %}
+
+{% block title %}
+    {{ Server_Title }} | Error
+{% endblock %}
+
+{% block body %}
+    <body>
+		<div class="container righteous text-center" style="max-width: 600px;">
+		    <h1 class="text-center pt-5">Error Occurs</h1>
+		</div>
+        <div class="container montserrat border border-dark rounded p-3" style="max-width: 480px;">
+            <p class="text-danger text-center montserrat">{{ error }}</p>
+            <p class="text-danger text-center montserrat-alt">{{ message }}</p>
+        </div>
+    </body>
+{% endblock %}

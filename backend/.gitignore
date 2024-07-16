@@ -1,0 +1,12 @@
+# Ignore virtual environment directory
+venv/
+
+# Ignore SQLite database file
+Database/db.sqlite3
+
+# Ignore Python cache directory
+Exam/__pycache__/
+api/__pycache__/
+api/migrations/__pycache__/
+website/__pycache__/
+website/migrations/__pycache__/

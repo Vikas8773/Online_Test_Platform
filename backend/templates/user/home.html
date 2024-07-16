@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Vikas Sangale" />
+    <title>{{ Server_Title }}</title>
+    {% load static %}
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.0/examples/cover/"
+    />
+    <link href="{% static 'css/user/bootstrap.min.css' %}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <link href="{% static 'css/user/home.css' %}" rel="stylesheet" />
+  </head>
+
+  <body
+    class="d-flex h-100 text-center text-white bg-dark"
+    style="
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+      url({% static 'assets/image/home_background.webp' %});
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    "
+  >
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto">
+        <div>
+          <h3 class="float-md-start mb-0">{{ Server_Title }}</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link" href="/accounts/login">Login</a>
+            <a class="nav-link" href="/accounts/register">Register</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="px-3">
+        <h1>{{ Server_Title }}</h1>
+        <p class="lead">{{ Server_Description }}</p>
+        <p class="lead">
+          <a
+            href="/accounts/login"
+            class="m-2 btn btn-lg btn-secondary fw-bold border-white bg-white"
+            >LogIn</a
+          >
+          <a
+            href="/accounts/register"
+            class="m-2 btn btn-lg fw-bold border-white text-light"
+            >Register</a
+          >
+        </p>
+      </main>
+
+      <footer class="mt-auto text-white-50">
+        <p>
+          SiteRights Reserved by
+          <a
+            href="https://www.instagram.com/vikas.sangale_/"
+            style="text-decoration: none"
+            >@Vikas Sangale.</a
+          >
+          and
+          <a
+            href="https://www.instagram.com/_kshitij_rathor_/"
+            style="text-decoration: none"
+            >@Kshitij Rathore.</a
+          >
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
+
+{% block extra %} {% endblock %}

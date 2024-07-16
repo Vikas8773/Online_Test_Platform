@@ -1,0 +1,23 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+
+{% block title %}
+  {{ Server_Title }} | Verify
+{% endblock %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block body %}
+{% csrf_token %}
+<script src="{% static 'js/user/verify.js' %}"></script>
+{% endblock %}
+
+
+{% block extra %}
+
+{% endblock %}

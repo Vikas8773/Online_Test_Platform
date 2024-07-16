@@ -1,0 +1,80 @@
+{% extends 'dashboard/basic_dashboard.html' %}
+{% load static %}
+
+
+{% block title %}
+  {{ Server_Title }} | Settings
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <!-- general form elements -->
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">Edit Profile</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/api/settings" method="post" id="settings-form">
+          {% csrf_token %}
+          <div class="card-body">
+            <div class="form-group">
+              <label for="first_name">First Name</label>
+              <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" value="{{ request.user.first_name }}">
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last Name</label>
+              <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" value="{{ request.user.last_name }}">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Email" readonly value="{{ request.user.email }}">
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Username" readonly value="{{ request.user.username }}">
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <p class="login-box-msg text-danger" id="login-msg"></p>
+          <div class="card-footer row">
+              <div class="col-5 text-right">
+                  <i class="fas fa-spinner fa-pulse d-none" id="settings-loading" style="font-size: 30px;"></i>
+              </div>
+              <div class="col-7">
+                <button type="submit" class="btn btn-success btn-block" id="settings-submit">Submit</button>
+              </div>
+          </div>
+        </form>
+      </div>
+      <!-- /.card -->
+    </div>
+    <div class="col-md-6">
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">Reset Password</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/accounts/reset_password" method="get">
+          {% csrf_token %}
+          <div class="card-footer text-center">
+            <button type="submit" class="btn btn-danger w-75">Want to Reset Password ?</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/dashboard/settings.js' %}"></script>
+{% endblock %}
+
+
+{% block extra %}
+
+{% endblock %}

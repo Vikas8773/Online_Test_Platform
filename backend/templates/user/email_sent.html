@@ -1,0 +1,32 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+
+{% block title %}
+  {{ Server_Title }} Email Sent
+{% endblock %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block body %}
+<body class="container-fluid m-0 p-0 body-wrapper" style="height: 100vh;">
+	<!-- page -->
+    <div class="container righteous text-center" style="max-width: 600px;">
+        <h1 class="text-center p-3">Email Send Successfully</h1>
+    </div>
+    <div class="container montserrat border border-dark rounded p-3" style="max-width: 480px;">
+        <img src="{% static 'assets/image/email_send_success.gif' %}" width="100%" height="100%">
+        <p class="text-danger text-center montserrat-alt">Check Your registered Email to Verify You</p>
+        <p class="text-danger text-center montserrat-alt">Then LogIn Again</p>
+    </div>
+</body>
+{% endblock %}
+
+
+{% block extra %}
+
+{% endblock %}

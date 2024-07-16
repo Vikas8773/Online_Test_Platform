@@ -1,0 +1,142 @@
+{% extends 'exam/base.html' %}
+{% load static %}
+
+{% block title %}
+{{ Server_Title }} | Exam
+{% endblock %}
+
+
+{% block head %}
+<script>
+  var AnswerSheetId = '{{ id }}';
+  window.history.forward();
+</script>
+{% endblock %}
+
+
+{% block body %}
+<body class="hold-transition layout-top-nav unselectable" oncontextmenu="return false;">
+
+  <section style="height: 100vh; display: block;" id="exam-screen-pause">
+    <div class="container montserrat border border-dark rounded p-3 my-5" style="max-width: 480px;">
+      <p class="text-danger text-center montserrat"><b>Click Anywhere to Enter Exam Screen</b></p>
+        <p class="text-danger text-center montserrat-alt">Do not Waste time here because your Time is already started and not paused due to this action.</p>
+    </div>
+  </section>
+
+  <section class="d-none" id="time_trigger_message">
+
+  </section>
+
+  <section class="d-none" id="end_exam_confirm">
+    <div class="container montserrat border border-dark rounded p-3 my-5" style="max-width: 480px;">
+      <h4 class="text-danger text-center montserrat"><b>Are you Sure you want to End Exam ?</b></h4>
+      <p class="text-danger text-center montserrat-alt">Irreversible Process, Confirm first then End Exam.</p>
+
+      <form action="/api/exam/end" method="post" id="end_exam_form">
+        {% csrf_token %}
+        <input type="hidden" name="answersheet_id" id="answersheet_id" value="{{ id }}" readonly>
+        <div class="row">
+          <div class="col-6">
+            <button type="button" class="btn btn-primary w-100" id="cancel_end_exam">Cancel</button>
+          </div>
+          <div class="col-6">
+            <button type="submit" class="btn btn-danger w-100">End Exam</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="alert-messages">
+
+  </section>
+
+  <section style="display: none;" id="exam-page">
+    <div class="d-none" id="test_id_form">
+      {% csrf_token %}
+    </div>
+
+    <div class="wrapper" id="wrapper" style="height: 100vh;">
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand-md navbar-light navbar-white " style="height: 10vh;">
+        <div class="container">
+          <h5 class="navbar-brand my-auto">
+            <span class="brand-text font-weight-light"><b>{{ Server_Title }}</b></span>
+          </h5>
+
+          <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+
+            </ul>
+          </div>
+
+          <!-- Right navbar links -->
+          <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+            <li class="nav-item">
+              <h5 class="m-0 mr-4 my-2">
+                <b id="timer">00:00:00</b>
+              </h5>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-danger" id="end_exam_button">End Exam</button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- /.navbar -->
+
+      <section class="container-fluid m-0" style="height: 80vh;">
+        <div class="card h-100" style="overflow: auto; background-color: #f2f2f2;">
+          <div class="card-body">
+            <div class="row h-100">
+
+              <div class="col-md-9 h-100">
+                <div class="card h-100">
+                  <div class="card-body" style="overflow: auto;">
+
+                    <div class="container" id="question-block">
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3 h-100">
+                <div class="card h-100">
+                  <div class="card-header">
+                    <p class="text-center m-0 text-dark"><b>Question Panel</b></p>
+                  </div>
+                  <div class="card-body" style="overflow:auto;">
+                    <div class="row" id="question-panel">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="main-footer p-auto">
+        <div class="float-right">
+          <button class="btn btn-primary mr-auto px-4" id="next">Next</button>
+        </div>
+        <button class="btn btn-primary ml-2 px-3" id="previous">Previous</button>
+      </footer>
+    </div>
+  </section>
+
+</body>
+
+<script src="{% static 'js/exam/exam.js' %}"></script>
+{% endblock %}
+
+
+{% block extra %}
+
+{% endblock %}

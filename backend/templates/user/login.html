@@ -1,0 +1,67 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block title %}
+  {{ Server_Title }} | Login
+{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+  <body class="hold-transition login-page">
+    <div class="login-box">
+      <div class="card card-outline card-primary">
+        <div class="card-header text-center">
+          <a href="/" class="h1"><b>{{ Server_Title }}</b></a>
+        </div>
+        <div class="card-body">
+          <h5 class="text-center"><b>LogIn</b></h5>
+          <p class="login-box-msg text-danger" id="login-msg"></p>
+
+          <form action="/api/accounts/login" method="POST" id="login-form">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="username" placeholder="Username" required />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-envelope"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" name="password" placeholder="Password" required />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-5 text-right">
+                <i class="fas fa-spinner fa-pulse d-none" id="login-loading" style="font-size: 30px;"></i>
+              </div>
+              <div class="col-7">
+                <button type="submit" class="btn btn-primary btn-block" id="login-submit">LogIn</button>
+              </div>
+            </div>
+          </form>
+
+          <p class="mb-1">
+            <a href="/accounts/forgot_password">I forgot my password</a>
+          </p>
+          <p class="mb-0">
+            <a href="/accounts/register" class="text-center">Register as new member</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/user/login.js' %}"></script>
+  </body>
+{% endblock %}
+
+{% block extra %}
+
+{% endblock %}

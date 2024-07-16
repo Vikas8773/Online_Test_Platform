@@ -1,0 +1,30 @@
+{% extends 'examine/basic_examine.html' %}
+{% load static %}
+
+
+{% block title %}
+  {{ Server_Title }} | Examine
+{% endblock %}
+
+
+{% block content %}
+<section class="content container-fluid">
+  <h5 class="mb-2 pt-4"><b>Recent Uploaded Test</b></h5>
+  {% csrf_token %}
+  <div class="row" id="recent_uploaded_test">
+
+  </div>
+  <hr>
+  <h5 class="mb-2 pt-4"><b>Recent Uploaded Question</b></h5>
+  <div class="row" id="recent_uploaded_question">
+
+  </div>
+</section>
+
+<script src="{% static 'js/examine/examine.js' %}"></script>
+{% endblock %}
+
+
+{% block extra %}
+
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends 'examine/basic_examine.html' %}
+{% load static %}
+
+
+{% block title %}
+  {{ Server_Title }} | Add Question
+{% endblock %}
+
+
+{% block head %}
+  <!-- summernote -->
+  <link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.min.css' %}">
+  <!-- SimpleMDE -->
+  <link rel="stylesheet" href="{% static 'plugins/simplemde/simplemde.min.css' %}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="d-none" id="test_id_form">
+  {% csrf_token %}
+  <input type="text" name="id" id="test-id" class="d-none" value="{{ id }}" readonly>
+</div>
+
+<section id="add_test_form">
+  <div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title">Add Question</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <form action="/api/examine/add_question" method="post" id="add_test-form">
+      {% csrf_token %}
+      <div class="card-body">
+        <p class="login-box-msg text-danger" id="add_test-msg"></p>
+
+        <div class="form-group">
+          <input type="text" class="form-control d-none" id="id" name="id" value="{{ id }}" readonly required>
+        </div>
+
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" maxlength="200" style="text-transform: capitalize;" required>
+        </div>
+
+        <div class="form-group">
+          <label for="question">Question</label>
+          <p class="text-muted">*After uploading img, click on img and set width percentage that you want or 100%, but do not place img in original width.</p>
+          <textarea id="question" name="question" class="summernote-question" ></textarea>
+        </div>
+        <hr>
+        <div class="form-group">
+          <label for="option_1">Option-1</label>
+          <p class="text-muted">*After uploading img, click on img and set width percentage that you want or 100%, but do not place img in original width.</p>
+          <textarea id="option_1" name="option_1" class="summernote-option_1" ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="option_2">Option-2</label>
+          <p class="text-muted">*After uploading img, click on img and set width percentage that you want or 100%, but do not place img in original width.</p>
+          <textarea id="option_2" name="option_2" class="summernote-option_2" ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="option_3">Option-3</label>
+          <p class="text-muted">*After uploading img, click on img and set width percentage that you want or 100%, but do not place img in original width.</p>
+          <textarea id="option_3" name="option_3" class="summernote-option_3" ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="option_4">Option-4</label>
+          <p class="text-muted">*After uploading img, click on img and set width percentage that you want or 100%, but do not place img in original width.</p>
+          <textarea id="option_4" name="option_4" class="summernote-option_4" ></textarea>
+        </div>
+        <hr>
+        <div class="form-group">
+          <label>Correct Answer</label>
+          <p class="text-muted">Options are not randomized in paper so keep shuffled answer for every question manually.</p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="answer" id="answer_1" value="1" required>
+            <label class="form-check-label" for="answer_1">
+              Option 1
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="answer" id="answer_2" value="2">
+            <label class="form-check-label" for="answer_2">
+              Option 2
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="answer" id="answer_3" value="3">
+            <label class="form-check-label" for="answer_3">
+              Option 3
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="answer" id="answer_4" value="4">
+            <label class="form-check-label" for="answer_4">
+              Option 4
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="answer_key_description">Answer Description</label>
+          <p class="text-muted">*After uploading img, click on img and set width percentage that you want or 100%, but do not place img in original width.</p>
+          <textarea id="answer_key_description" name="answer_key_description" class="summernote-answer_key_description"></textarea>
+        </div>
+
+      </div>
+      <!-- /.card-body -->
+
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-7 text-right">
+              <i class="fas fa-spinner fa-pulse d-none" id="add_test-loading" style="font-size: 30px;"></i>
+          </div>
+          <div class="col-5">
+            <button type="submit" class="btn btn-primary btn-block" id="add_test-submit">Create Question</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script src="{% static 'js/examine/add_question.js' %}"></script>
+
+<!-- Summernote -->
+<script src="{% static 'plugins/summernote/summernote-bs4.min.js' %}"></script>
+
+<!-- bs-custom-file-input -->
+<script src="{% static 'plugins/bs-custom-file-input/bs-custom-file-input.min.js' %}"></script>
+<script>
+  $(function () {
+    $('#question').summernote({
+      placeholder: 'Enter Question'
+    });
+
+    $('#option_1').summernote({
+      placeholder: 'Enter Option'
+    });
+
+    $('#option_2').summernote({
+      placeholder: 'Enter Option'
+    });
+
+    $('#option_3').summernote({
+      placeholder: 'Enter Option'
+    });
+
+    $('#option_4').summernote({
+      placeholder: 'Enter Option'
+    });
+
+    $('#answer_key_description').summernote({
+      placeholder: 'Enter Answer Description'
+    });
+
+    bsCustomFileInput.init();
+  });
+</script>
+{% endblock %}
+
+
+{% block extra %}
+
+{% endblock %}

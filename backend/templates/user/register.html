@@ -1,0 +1,92 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+
+{% block title %}
+  {{ Server_Title }} | Register
+{% endblock %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block body %}
+<body class="hold-transition register-page">
+  <div class="register-box">
+    <div class="card card-outline card-primary">
+      <div class="card-header text-center">
+        <a href="/" class="h1"><b>{{ Server_Title }}</b></a>
+      </div>
+      <div class="card-body">
+        <h5 class="text-center"><b>Register</b></h5>
+          <p class="login-box-msg text-danger" id="register-msg"></p>
+
+          <form action="/api/accounts/register" method="POST" id="register-form">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+              <div class="row">
+                <div class="col-6">
+                  <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+                </div>
+                <div class="col-6">
+                  <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" name="email" placeholder="Email" required>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-envelope"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="username" placeholder="Username" required>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+              <div class="input-group-append">
+                  <button type="button" class="input-group-text border"  id="visible-password">
+                      <span id="password-eye" class="fas fa-eye"></span>
+                  </button>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" name="retype_password" id="retype_password" placeholder="Retype password" required>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-5 text-right">
+                  <i class="fas fa-spinner fa-pulse d-none" id="register-loading" style="font-size: 30px;"></i>
+              </div>
+              <div class="col-7">
+                <button type="submit" class="btn btn-primary btn-block" id="register-submit">Register</button>
+              </div>
+            </div>
+          </form>
+
+          <a href="/accounts/login" class="text-center">I already have a member</a>
+        </div>
+    </div>
+  </div>
+
+  <script src="{% static 'js/user/register.js' %}"></script>
+</body>
+{% endblock %}
+
+
+{% block extra %}
+
+{% endblock %}

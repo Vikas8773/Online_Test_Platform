@@ -1,0 +1,90 @@
+{% extends 'exam/base.html' %}
+{% load static %}
+
+{% block title %}
+{{ Server_Title }} | Instructions
+{% endblock %}
+
+
+{% block head %}
+<script>window.history.forward();</script>
+{% endblock %}
+
+
+{% block body %}
+<body class="hold-transition layout-top-nav unselectable" oncontextmenu="return false;">
+  <div class="d-none" id="test_id_form">
+    {% csrf_token %}
+    <input type="text" name="id" id="test-id" class="d-none" value="{{ id }}" readonly>
+  </div>
+
+  <div class="wrapper" style="height: 100vh;">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white " style="height: 10vh;">
+      <div class="container">
+        <h5 class="navbar-brand my-auto">
+          <span class="brand-text font-weight-light"><b>{{ Server_Title }}</b></span>
+        </h5>
+
+        <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+          <!-- Left navbar links -->
+          <ul class="navbar-nav">
+
+          </ul>
+        </div>
+
+        <!-- Right navbar links -->
+        <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+          <li class="nav-item">
+            <form action="/api/start_exam" method="post" id="start_exam_form">
+              {% csrf_token %}
+              <input type="hidden" name="id" id="id" class="d-none" value="{{ id }}" readonly>
+              <button type="submit" class="btn btn-danger" id="start_exam" disabled>Start Exam</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- /.navbar -->
+
+    <section class="container-fluid m-0" style="height: 80vh;">
+      <div class="card h-100" style="overflow: auto; background-color: #f2f2f2;">
+        <div class="card-body">
+          <div class="row h-100">
+            <div class="col-md-12 h-100">
+              <div class="card h-100">
+                <div class="card-header">
+                  <h4>Instruction & Details</h4>
+                </div>
+                <div class="card-body container-fluid" style="overflow: auto;" id="test-information-card">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="main-footer p-auto">
+      <div class="form-check ml-auto">
+        <input class="form-check-input" type="checkbox" value="" id="agree_box">
+        <label class="form-check-label" for="agree_box">
+          <b>I have read all Instruction and Rules, Ready to Continue..</b>
+        </label>
+      </div>
+    </footer>
+
+  </div>
+</body>
+
+<script src="{% static 'js/exam/instruction_exam.js' %}"></script>
+<script>
+
+</script>
+{% endblock %}
+
+
+{% block extra %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+
+{% block title %}
+  {{ Server_Title }}
+{% endblock %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block body %}
+{% csrf_token %}
+<script src="{% static 'js/user/logout.js' %}"></script>
+{% endblock %}
+
+
+{% block extra %}
+
+{% endblock %}
