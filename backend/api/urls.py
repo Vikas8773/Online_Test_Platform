@@ -39,8 +39,8 @@ urlpatterns = [
     path('examine2/question2', views.QuestionView.as_view()),
     path('examine/edit_question', views.Examine.edit_question),
     path('examine/edit_question2', views.EditQuestionView.as_view()),
-    path('examine2/result_list', views.Examine.result_list),
-    path('examine/result_list2', views.ResultListView.as_view()),
+    path('examine/result_list', views.Examine.result_list),
+    path('examine2/result_list2', views.ResultListView.as_view()),
 
     path('exam', views.Exam.exam),
     path('start_exam', views.Exam.start_exam),
