@@ -1,26 +1,26 @@
 {% extends 'examine/basic_examine.html' %} {% load static %} {% block title %}
 {{ Server_Title }} | Add test {% endblock %} {% block head %}
-<!-- summernote -->
+
 <link
   rel="stylesheet"
   href="{% static 'plugins/summernote/summernote-bs4.min.css' %}"
 />
-<!-- SimpleMDE -->
+
 <link
   rel="stylesheet"
   href="{% static 'plugins/simplemde/simplemde.min.css' %}"
 />
-<!-- daterange picker -->
+
 <link
   rel="stylesheet"
   href="{% static 'plugins/daterangepicker/daterangepicker.css' %}"
 />
-<!-- Tempusdominus Bootstrap 4 -->
+
 <link
   rel="stylesheet"
   href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}"
 />
-<!-- Font Awesome -->
+
 <link
   rel="stylesheet"
   href="{% static 'plugins/fontawesome-free/css/all.min.css' %}"
@@ -117,7 +117,6 @@
             />
           </div>
         </div>
-
         <div class="form-group">
           <h6>From Date & Time:</h6>
           <div class="row">
@@ -339,4 +338,12 @@
     $("#till_date_time").val(null);
   });
 </script>
+<<<<<<< HEAD
 {% endblock %} {% block extra %} {% endblock %}
+=======
+{% endblock %}
+
+
+{% block extra %}
+
+{% endblock %}
