@@ -161,10 +161,10 @@ EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', config.get('Email', 'email_backend', 
 EMAIL_HOST = os.getenv('EMAIL_HOST', config.get('Email', 'email_host', fallback='smtp.gmail.com'))
 EMAIL_PORT = int(os.getenv('EMAIL_PORT', config.getint('Email', 'email_port', fallback=587)))
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', config.get('Email', 'email_host_user', fallback='your-email@example.com'))
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', config.get('Email', 'email_host_password', fallback='your-email-password'))
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', config.get('Email', 'email_host_password', fallback='your-app-specific-password'))
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', config.getboolean('Email', 'email_use_tls', fallback=True))
+EMAIL_FROM = os.getenv('EMAIL_FROM', config.get('Email', 'email_from', fallback='QuizCrafter'))
 
-EMAIL_FROM = str(os.getenv('EMAIL_FROM', config.get('Email', 'email_from', fallback='Online Test Platform')))
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
