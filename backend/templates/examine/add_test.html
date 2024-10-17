@@ -1,120 +1,58 @@
-{% extends 'examine/basic_examine.html' %} {% load static %} {% block title %}
-{{ Server_Title }} | Add test {% endblock %} {% block head %}
+{% extends 'examine/basic_examine.html' %}
+{% load static %}
 
-<link
-  rel="stylesheet"
-  href="{% static 'plugins/summernote/summernote-bs4.min.css' %}"
-/>
+{% block title %}
+{{ Server_Title }} | Add test
+{% endblock %}
 
-<link
-  rel="stylesheet"
-  href="{% static 'plugins/simplemde/simplemde.min.css' %}"
-/>
+{% block head %}
+<link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.min.css' %}" />
+<link rel="stylesheet" href="{% static 'plugins/simplemde/simplemde.min.css' %}" />
+<link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}" />
+<link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}" />
+<link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}" />
+{% endblock %}
 
-<link
-  rel="stylesheet"
-  href="{% static 'plugins/daterangepicker/daterangepicker.css' %}"
-/>
-
-<link
-  rel="stylesheet"
-  href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}"
-/>
-
-<link
-  rel="stylesheet"
-  href="{% static 'plugins/fontawesome-free/css/all.min.css' %}"
-/>
-{% endblock %} {% block content %}
+{% block content %}
 <section id="add_test_form">
   <div class="card card-primary">
     <div class="card-header">
       <h3 class="card-title">Add Test</h3>
     </div>
-    <!-- /.card-header -->
-    <!-- form start -->
     <form action="/api/examine/add_test" method="post" id="add_test-form">
       {% csrf_token %}
       <div class="card-body">
         <p class="login-box-msg text-danger" id="add_test-msg"></p>
         <div class="form-group">
           <label for="title">Title</label>
-          <input
-            type="text"
-            class="form-control"
-            id="title"
-            name="title"
-            placeholder="Enter Title"
-            maxlength="200"
-            style="text-transform: capitalize"
-            required
-          />
+          <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" maxlength="200" style="text-transform: capitalize" required />
         </div>
         <div class="form-group">
           <label for="subject">Subject</label>
-          <input
-            type="text"
-            class="form-control"
-            id="subject"
-            name="subject"
-            placeholder="Enter Subject"
-            maxlength="100"
-            style="text-transform: capitalize"
-            required
-          />
+          <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject" maxlength="100" style="text-transform: capitalize" required />
         </div>
-
         <div class="form-group">
           <label for="description">Description</label>
           <p class="text-muted">
-            *After uploading img, click on img and set width percentage that you
-            want or 100%, but do not place img in original width.
+            *After uploading img, click on img and set width percentage that you want or 100%, but do not place img in original width.
           </p>
-          <textarea
-            id="description"
-            name="description"
-            class="summernote-description"
-          ></textarea>
+          <textarea id="description" name="description" class="summernote-description"></textarea>
         </div>
-
         <div class="form-group">
           <label for="total_questions">Total Questions</label>
-          <input
-            type="number"
-            class="form-control"
-            id="total_questions"
-            name="total_questions"
-            placeholder="Enter Total Questions"
-            required
-          />
+          <input type="number" class="form-control" id="total_questions" name="total_questions" placeholder="Enter Total Questions" required />
         </div>
         <div class="form-group">
           <label for="marks_per_question">Marks Per Question</label>
-          <input
-            type="number"
-            class="form-control"
-            id="marks_per_question"
-            name="marks_per_question"
-            placeholder="Enter Marks Per Question"
-            required
-          />
+          <input type="number" class="form-control" id="marks_per_question" name="marks_per_question" placeholder="Enter Marks Per Question" required />
         </div>
-
         <div class="form-group">
           <label for="total_time">Total Duration (hr:min:sec)</label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="far fa-clock"></i></span>
             </div>
-            <input
-              type="text"
-              class="form-control"
-              data-inputmask='"mask": "99:99:99"'
-              data-mask
-              id="total_time"
-              name="total_time"
-              required
-            />
+            <input type="text" class="form-control" data-inputmask='"mask": "99:99:99"' data-mask id="total_time" name="total_time" required />
           </div>
         </div>
         <div class="form-group">
@@ -122,60 +60,23 @@
           <div class="row">
             <div class="col-md-6">
               <label for="from_date_date">Date</label>
-              <div
-                class="input-group date"
-                id="from_date_date_reservationdate"
-                data-target-input="nearest"
-              >
-                <div
-                  class="input-group-append"
-                  data-target="#from_date_date_reservationdate"
-                  data-toggle="datetimepicker"
-                >
-                  <input
-                    type="text"
-                    class="form-control datetimepicker-input"
-                    data-target="#from_date_date_reservationdate"
-                    id="from_date_date"
-                    name="from_date_date"
-                    autocomplete="off"
-                  />
+              <div class="input-group date" id="from_date_date_reservationdate" data-target-input="nearest">
+                <div class="input-group-append" data-target="#from_date_date_reservationdate" data-toggle="datetimepicker">
+                  <input type="text" class="form-control datetimepicker-input" data-target="#from_date_date_reservationdate" id="from_date_date" name="from_date_date" autocomplete="off" />
                 </div>
               </div>
             </div>
             <div class="col-md-6">
               <label for="from_date_time">Time</label>
-              <div
-                class="input-group date"
-                id="from_date_time_timepicker"
-                data-target-input="nearest"
-              >
-                <div
-                  class="input-group-append"
-                  data-target="#from_date_time_timepicker"
-                  data-toggle="datetimepicker"
-                >
-                  <input
-                    type="text"
-                    class="form-control datetimepicker-input"
-                    data-target="#from_date_time_timepicker"
-                    id="from_date_time"
-                    name="from_date_time"
-                    autocomplete="off"
-                  />
+              <div class="input-group date" id="from_date_time_timepicker" data-target-input="nearest">
+                <div class="input-group-append" data-target="#from_date_time_timepicker" data-toggle="datetimepicker">
+                  <input type="text" class="form-control datetimepicker-input" data-target="#from_date_time_timepicker" id="from_date_time" name="from_date_time" autocomplete="off" />
                 </div>
               </div>
             </div>
           </div>
           <div class="container-fluid text-right">
-            <button
-              type="button"
-              class="btn btn-danger"
-              name="clear_from_date"
-              id="clear_from_date"
-            >
-              Clear From Date
-            </button>
+            <button type="button" class="btn btn-danger" name="clear_from_date" id="clear_from_date">Clear From Date</button>
           </div>
         </div>
         <hr />
@@ -184,60 +85,23 @@
           <div class="row">
             <div class="col-md-6">
               <label for="till_date_date">Date</label>
-              <div
-                class="input-group date"
-                id="till_date_date_reservationdate"
-                data-target-input="nearest"
-              >
-                <div
-                  class="input-group-append"
-                  data-target="#till_date_date_reservationdate"
-                  data-toggle="datetimepicker"
-                >
-                  <input
-                    type="text"
-                    class="form-control datetimepicker-input"
-                    data-target="#till_date_date_reservationdate"
-                    id="till_date_date"
-                    name="till_date_date"
-                    autocomplete="off"
-                  />
+              <div class="input-group date" id="till_date_date_reservationdate" data-target-input="nearest">
+                <div class="input-group-append" data-target="#till_date_date_reservationdate" data-toggle="datetimepicker">
+                  <input type="text" class="form-control datetimepicker-input" data-target="#till_date_date_reservationdate" id="till_date_date" name="till_date_date" autocomplete="off" />
                 </div>
               </div>
             </div>
             <div class="col-md-6">
               <label for="till_date_time">Time</label>
-              <div
-                class="input-group date"
-                id="till_date_time_timepicker"
-                data-target-input="nearest"
-              >
-                <div
-                  class="input-group-append"
-                  data-target="#till_date_time_timepicker"
-                  data-toggle="datetimepicker"
-                >
-                  <input
-                    type="text"
-                    class="form-control datetimepicker-input"
-                    data-target="#till_date_time_timepicker"
-                    id="till_date_time"
-                    name="till_date_time"
-                    autocomplete="off"
-                  />
+              <div class="input-group date" id="till_date_time_timepicker" data-target-input="nearest">
+                <div class="input-group-append" data-target="#till_date_time_timepicker" data-toggle="datetimepicker">
+                  <input type="text" class="form-control datetimepicker-input" data-target="#till_date_time_timepicker" id="till_date_time" name="till_date_time" autocomplete="off" />
                 </div>
               </div>
             </div>
           </div>
           <div class="container-fluid text-right">
-            <button
-              type="button"
-              class="btn btn-danger"
-              name="clear_till_date"
-              id="clear_till_date"
-            >
-              Clear Till Date
-            </button>
+            <button type="button" class="btn btn-danger" name="clear_till_date" id="clear_till_date">Clear Till Date</button>
           </div>
         </div>
         <hr />
@@ -246,41 +110,22 @@
             Beware ! Activating this button makes Test visible for students.
           </p>
           <div class="custom-control custom-checkbox">
-            <input
-              class="custom-control-input"
-              type="checkbox"
-              id="status"
-              name="status"
-            />
-            <label for="status" class="custom-control-label text-danger"
-              >*</label
-            >
+            <input class="custom-control-input" type="checkbox" id="status" name="status" />
+            <label for="status" class="custom-control-label text-danger">*</label>
           </div>
           <p class="text-muted">
-            To test goes online on given time or immediately, You need to
-            Activate this.
+            To test goes online on given time or immediately, You need to Activate this.
           </p>
         </div>
       </div>
-      <!-- /.card-body -->
 
       <div class="card-footer">
         <div class="row">
           <div class="col-7 text-right">
-            <i
-              class="fas fa-spinner fa-pulse d-none"
-              id="add_test-loading"
-              style="font-size: 30px"
-            ></i>
+            <i class="fas fa-spinner fa-pulse d-none" id="add_test-loading" style="font-size: 30px"></i>
           </div>
           <div class="col-5">
-            <button
-              type="submit"
-              class="btn btn-primary btn-block"
-              id="add_test-submit"
-            >
-              Create Test
-            </button>
+            <button type="submit" class="btn btn-primary btn-block" id="add_test-submit">Create Test</button>
           </div>
         </div>
       </div>
@@ -289,17 +134,11 @@
 </section>
 
 <script src="{% static 'js/examine/add_test.js' %}"></script>
-
-<!-- Summernote -->
 <script src="{% static 'plugins/summernote/summernote-bs4.min.js' %}"></script>
-<!-- InputMask -->
 <script src="{% static 'plugins/moment/moment.min.js' %}"></script>
 <script src="{% static 'plugins/inputmask/jquery.inputmask.min.js' %}"></script>
-<!-- date-range-picker -->
 <script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
-<!-- Tempusdominus Bootstrap 4 -->
 <script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
-<!-- bs-custom-file-input -->
 <script src="{% static 'plugins/bs-custom-file-input/bs-custom-file-input.min.js' %}"></script>
 <script>
   $(function () {
@@ -325,25 +164,15 @@
       format: "LT",
     });
 
-    bsCustomFileInput.init();
-  });
+    $("#clear_from_date").on("click", function () {
+      $("#from_date_date").val("");
+      $("#from_date_time").val("");
+    });
 
-  $("#clear_from_date").on("click", function () {
-    $("#from_date_date").val(null);
-    $("#from_date_time").val(null);
-  });
-
-  $("#clear_till_date").on("click", function () {
-    $("#till_date_date").val(null);
-    $("#till_date_time").val(null);
+    $("#clear_till_date").on("click", function () {
+      $("#till_date_date").val("");
+      $("#till_date_time").val("");
+    });
   });
 </script>
-<<<<<<< HEAD
-{% endblock %} {% block extra %} {% endblock %}
-=======
-{% endblock %}
-
-
-{% block extra %}
-
 {% endblock %}
