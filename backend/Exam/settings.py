@@ -95,16 +95,39 @@ WSGI_APPLICATION = 'Exam.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Exam',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',  # Database engine for SQLite
+        'NAME': BASE_DIR / 'db.sqlite3',  # Path to the database file
     }
 }
-database_url=os.environ.get("DATABASE_URL")
-DATABASES['default'] = dj_database_url.parse(database_url)
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'Exam',
+#         'USER': 'root',
+#         'PASSWORD': 'root',
+#         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+#         'PORT': '3306',
+#     }
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'onlinetestdata',  # Name of your MongoDB database
+#         'ENFORCE_SCHEMA': False,  # Disable schema enforcement, optional
+#         'CLIENT': {
+#             'host': 'mongodb+srv://vikas11s:<password>@cluster0.9lldv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',  # Your MongoDB host
+#             'port': 27017,         # Default MongoDB port
+#             'username': 'vikas11s',  # Optional: your MongoDB username
+#             'password': 'vikas@2003',  # Optional: your MongoDB password
+#             'authSource': 'admin',  # Optional: MongoDB authentication source
+#             'authMechanism': 'SCRAM-SHA-1'  # Optional: authentication mechanism
+#         }
+#     }
+# }
+# database_url=os.environ.get("DATABASE_URL")
+# DATABASES['default'] = dj_database_url.parse(database_url)
 #postgresql://vikas:Uz5Yn5GXUZTBQ9wG0hsnDYIEXY6nNjh5@dpg-cqatkguehbks73df2v3g-a.oregon-postgres.render.com/onlinetestplatform_django_render
 
 AUTH_PASSWORD_VALIDATORS = [
