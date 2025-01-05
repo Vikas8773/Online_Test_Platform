@@ -1,7 +1,18 @@
 {% extends 'dashboard/base.html' %}
 {% load static %}
 
+{% block title %}
+    Settings
+{% endblock %}
+
 {% block head %}
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}">
+    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/adminlte.min.js' %}"></script>
+    <script src="{% static 'js/demo.js' %}"></script>
 {% endblock %}
 
 {% block body %}
@@ -17,9 +28,6 @@
         <li class="nav-item d-none d-sm-inline-block">
           <a href="/dashboard" class="nav-link">Home</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-<!--          <a href="/contact" class="nav-link">Contact</a>-->
-        </li>
       </ul>
 
       <!-- Right navbar links -->
@@ -29,7 +37,6 @@
           <a href="/examine" class="btn btn-success">Examine</a>
         </li>
         {% endif %}
-
         <li class="nav-item">
           <form action="/accounts/logout" method="post" id="logout-form">
             {% csrf_token %}
@@ -47,36 +54,22 @@
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
       <a href="/" class="brand-link">
         <span class="brand-text font-weight-light"><b>{{ Server_Title }}</b></span>
       </a>
-
-      <!-- Sidebar -->
       <div class="sidebar">
-        <!-- Sidebar user (optional) -->
-<!--        <div class="user-panel mt-3 pb-3 mb-3 d-flex">-->
-<!--          <div class="image">-->
-<!--            <img src="{% static 'assets/image/user_icon.png' %}" class="img-circle elevation-2" alt="User Image" />-->
-<!--          </div>-->
-<!--          <div class="info">-->
-<!--            <a href="#" class="d-block">{{ request.user.first_name }} {{ request.user.last_name }}</a>-->
-<!--          </div>-->
-<!--        </div>-->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
             <img src="{% static 'assets/image/user_icon.png' %}" class="img-circle elevation-2" alt="User Image" />
           </div>
           <div class="info">
             {% if request.user.is_staff %}
-              <a href="#" class="d-block">Hello Admin</a>
+            <a href="#" class="d-block">Hello Admin</a>
             {% else %}
-              <a href="#" class="d-block">{{ request.user.first_name }} {{ request.user.last_name }}</a>
+            <a href="#" class="d-block">{{ request.user.first_name }} {{ request.user.last_name }}</a>
             {% endif %}
           </div>
         </div>
-
-        <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
@@ -105,29 +98,27 @@
             </li>
           </ul>
         </nav>
-        <!-- /.sidebar-menu -->
       </div>
-      <!-- /.sidebar -->
     </aside>
 
-    <!-- Content Wrapper. Contains page content -->
+    <!-- Content Wrapper -->
     <div class="content-wrapper">
-      {% block content %}
-      {% endblock %}
+        {% block content %}
+        <!-- Add your page content here -->
+        {% endblock %}
     </div>
     <!-- /.content-wrapper -->
 
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
-        <b>Version</b> {{ Version }}
+<!--        <b>Version</b> {{ Version }}-->
       </div>
-      <strong>Copyright &copy; QuizCrafter Team.</strong> All rights reserved.
-
+<!--      <strong>Copyright &copy; QuizCrafter Team.</strong> All rights reserved.-->
     </footer>
   </div>
-  <!-- ./wrapper -->
 </body>
 {% endblock %}
 
 {% block extra %}
+<!-- Additional scripts can go here -->
 {% endblock %}
