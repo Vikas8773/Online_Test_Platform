@@ -1,2 +1,2 @@
-# Online_Test_Platform
+# QuizeCrafter
 
